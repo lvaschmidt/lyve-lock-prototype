@@ -1,0 +1,10 @@
+{
+  "name": "Wahoo Zones",
+  "short_name": "WahooZones",
+  "version": "0.0.1",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
