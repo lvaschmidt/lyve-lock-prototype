@@ -92,7 +92,7 @@ export const places: Place[] = [
       longitude: -78.5134577,
     },
   },
-] as const;
+];
 
 export const lotTypes = ["free", "paid", "permit"] as const;
 export type LotTypes = (typeof lotTypes)[number];
