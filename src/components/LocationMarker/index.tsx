@@ -15,7 +15,11 @@ export function LocationMarker({ latitude, longitude }: LocationMarkerProps) {
   });
 
   return (
-    <Marker latitude={latitude} longitude={longitude}>
+    <Marker
+      latitude={latitude}
+      longitude={longitude}
+      style={{ pointerEvents: "none" }}
+    >
       <div className={styles.locationDot} ref={markerChildRef} />
     </Marker>
   );

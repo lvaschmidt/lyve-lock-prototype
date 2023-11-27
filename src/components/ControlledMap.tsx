@@ -22,6 +22,15 @@ import {
   places,
   Place,
 } from "@/lib/store";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import { Link, useParams, useRouter } from "@tanstack/react-router";
 import { LockIcon } from "./icons/LockIcon";
 import { Search } from "lucide-react";
@@ -70,15 +79,34 @@ function LotMarker({ lot }: { lot: ParkingLot }) {
 }
 
 function ReportMarker({ report }: { report: Report }) {
+  const [open, setOpen] = useState(false);
   return (
-    <Marker
-      latitude={report.location.latitude}
-      longitude={report.location.longitude}
-    >
-      <div className="h-10 w-10 text-white pointer-events-auto bg-white rounded-full border border-slate-300 grid place-content-center">
-        {reportTypeIcons[report.type]}
-      </div>
-    </Marker>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger>
+        <Marker
+          latitude={report.location.latitude}
+          longitude={report.location.longitude}
+        >
+          <div className="h-10 w-10 text-white pointer-events-auto cursor-pointer bg-white rounded-full border border-slate-300 grid place-content-center">
+            {reportTypeIcons[report.type]}
+          </div>
+        </Marker>
+      </DialogTrigger>
+      <DialogContent className="py-8">
+        <DialogHeader>
+          <DialogTitle className="">
+            {report.type === "construction"
+              ? "Construction reported"
+              : "Police activity reported"}
+          </DialogTitle>
+          <DialogDescription>
+            {report.type === "construction"
+              ? "This may slow down nearby traffic or limit parking availability."
+              : "This may increase the chances of ticketing in this area. Please be careful when driving or parking here."}
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }
 

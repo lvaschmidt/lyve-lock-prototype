@@ -30,7 +30,7 @@ export function ReportsMenu() {
     setOpen(false);
   }
   return (
-    <div className="flex flex-col items-end justify-end gap-3">
+    <div className="flex flex-col items-end justify-end gap-2 ml-auto">
       {open && (
         <ul className="space-y-2">
           <li className={CLASSNAME}>
