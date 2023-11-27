@@ -153,7 +153,8 @@ export function ControlledMap({ children }: PropsWithChildren) {
         latitude,
         longitude,
       }));
-  }, [latitude, longitude, success]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [success]);
 
   return (
     <div className="fixed z-0 h-full w-full">
