@@ -48,7 +48,7 @@ export function Lot() {
         <Drawer.Portal>
           <Drawer.Overlay className="fixed inset-0" />
           <Drawer.Content className="fixed bottom-0 left-0 right-0 max-h-[50%] h-full">
-            <div className="bg-white flex flex-col rounded-t-2xl h-full pt-4">
+            <div className="bg-white border border-slate-300 flex flex-col rounded-t-2xl h-full pt-4 shadow-2xl">
               <div className="overflow-y-auto">
                 <div className="max-w-md w-full mx-auto flex flex-col p-4 px-8 h-full">
                   <h1 className="font-semibold text-3xl">{lot.name}</h1>
