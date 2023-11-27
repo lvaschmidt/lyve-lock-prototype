@@ -9,6 +9,7 @@ import {
 } from "./ui/command";
 import { places } from "@/lib/store";
 import { useRouter } from "@tanstack/react-router";
+import { CloseIcon } from "./icons/CloseIcon";
 
 export function SearchBox() {
   const router = useRouter();
@@ -25,17 +26,30 @@ export function SearchBox() {
     <>
       <Command shouldFilter={false} className="group">
         <CommandInput
+          autoFocus
           placeholder="Find parking near..."
           value={locationInput}
           onValueChange={setLocationInput}
-        />
-        <CommandList className="hidden group-focus-within:block px-1 pointer-events-auto">
+        >
+          <button
+            type="button"
+            className="ml-auto"
+            onClick={() => {
+              router.navigate({ to: "/" });
+            }}
+          >
+            <CloseIcon className="h-5 w-5 shrink-0 opacity-50" />
+          </button>
+        </CommandInput>
+        <CommandList className="px-1">
           {!locationInput ? (
             <>
               <CommandGroup heading="Favourite Places">
                 {saved.map((place) => (
                   <CommandItem
                     key={place.id}
+                    className="cursor-pointer"
+                    value={place.name}
                     onSelect={() => {
                       router.navigate({ to: `/search/${place.id}` });
                     }}

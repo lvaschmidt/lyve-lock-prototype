@@ -12,6 +12,7 @@ import {
 import { Home } from "./Home.tsx";
 import { Lot } from "./Lot.tsx";
 import { SearchResults } from "./SearchResults.tsx";
+import { Search } from "./Search.tsx";
 
 const rootRoute = new RootRoute();
 
@@ -37,14 +38,20 @@ const lotRoute = new Route({
   component: Lot,
 });
 
-const searchRoute = new Route({
+const searchResultRoute = new Route({
   getParentRoute: () => mapRoute,
   path: "search/$query",
   component: SearchResults,
 });
 
+const searchRoute = new Route({
+  getParentRoute: () => mapRoute,
+  path: "search",
+  component: Search,
+});
+
 const routeTree = rootRoute.addChildren([
-  mapRoute.addChildren([indexRoute, lotRoute, searchRoute]),
+  mapRoute.addChildren([indexRoute, lotRoute, searchRoute, searchResultRoute]),
 ]);
 export const router = new Router({ routeTree });
 

@@ -1,13 +1,14 @@
-import { SearchBox } from "./components/SearchBox";
-
 import { FilterModal } from "./components/FilterModal";
 import { FilterIcon } from "./components/icons/FilterIcon";
 import { ReportsMenu } from "./components/ReportsMenu";
 import { LocationIcon } from "./components/icons/LocationIcon";
 import { useMap } from "react-map-gl";
 import { useGeolocation } from "@uidotdev/usehooks";
+import { Command, CommandInput } from "./components/ui/command";
+import { useRouter } from "@tanstack/react-router";
 
 export function Home() {
+  const router = useRouter();
   const { map: mapRef } = useMap();
   const { latitude, longitude } = useGeolocation();
 
@@ -22,8 +23,13 @@ export function Home() {
 
   return (
     <>
-      <div className="rounded-2xl p-1 bg-white pointer-events-auto drop-shadow border border-slate-200">
-        <SearchBox />
+      <div className="pointer-events-auto">
+        <Command shouldFilter={false} className="bg-transparent">
+          <CommandInput
+            placeholder="Find parking near..."
+            onClick={() => router.navigate({ to: "/search" })}
+          />
+        </Command>
       </div>
       <div className="h-full justify-between flex flex-col">
         <div className="flex w-full justify-end">
