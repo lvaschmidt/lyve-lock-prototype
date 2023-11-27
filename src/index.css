@@ -8,6 +8,10 @@
   #root {
     height: 100% !important;
   }
+  html {
+    height: calc(100% + env(safe-area-inset-top));
+    overscroll-behavior: none;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
