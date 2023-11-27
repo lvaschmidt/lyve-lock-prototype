@@ -46,7 +46,7 @@ const reportTypeIcons = {
 function LotMarker({ lot }: { lot: ParkingLot }) {
   return (
     <Marker latitude={lot.location.latitude} longitude={lot.location.longitude}>
-      <div className="relative text-white">
+      <div className="relative text-white cursor-pointer">
         {lot.type === "permit" && (
           <LockIcon className="absolute z-20 w-5 h-5 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
         )}
@@ -61,7 +61,7 @@ function LotMarker({ lot }: { lot: ParkingLot }) {
           </div>
         )}
         <PinIcon
-          className="h-14 w-14 text-white pointer-events-auto cursor-pointer relative z-10"
+          className="h-14 w-14 text-white pointer-events-auto relative z-10"
           color={lotTypeColors[lot.type]}
         />
       </div>
