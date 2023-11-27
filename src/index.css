@@ -103,6 +103,10 @@
   .py-safe {
     @apply pt-safe pb-safe;
   }
+  .py-safe-10 {
+    padding-top: calc(env(safe-area-inset-top, 0) + 2.5rem);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0) + 2.5rem);
+  }
   .p-safe {
     @apply px-safe py-safe;
   }
