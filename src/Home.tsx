@@ -31,10 +31,10 @@ export function Home() {
             <FilterIcon className="w-7 h-7" />
           </FilterModal>
         </div>
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between items-end">
           <button
             type="button"
-            className="bg-white rounded-full pointer-events-auto grid place-content-center p-2.5 pt-3.5 pr-3.5 drop-shadow border border-slate-200"
+            className="bg-white h-min rounded-full pointer-events-auto grid place-content-center p-2.5 pt-3.5 pr-3.5 drop-shadow border border-slate-200"
             onClick={flyToCurrentLocation}
           >
             <LocationIcon className="w-7 h-7" />
