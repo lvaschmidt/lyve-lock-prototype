@@ -34,6 +34,7 @@ export function FilterModal({ children }: React.PropsWithChildren) {
             <li className="flex justify-between items-center font-medium">
               <h3>Free</h3>
               <Checkbox
+                className="w-5 h-5"
                 checked={filters.free}
                 onClick={() => updateFilters({ free: !filters.free })}
               />
@@ -41,6 +42,7 @@ export function FilterModal({ children }: React.PropsWithChildren) {
             <li className="flex justify-between items-center font-medium">
               <h3>Paid</h3>
               <Checkbox
+                className="w-5 h-5"
                 checked={filters.paid}
                 onClick={() => updateFilters({ paid: !filters.paid })}
               />
@@ -48,6 +50,7 @@ export function FilterModal({ children }: React.PropsWithChildren) {
             <li className="flex justify-between items-center font-medium">
               <h3>Permit</h3>
               <Checkbox
+                className="w-5 h-5"
                 checked={filters.permit}
                 onClick={() => updateFilters({ permit: !filters.permit })}
               />
@@ -55,6 +58,7 @@ export function FilterModal({ children }: React.PropsWithChildren) {
             <li className="flex justify-between items-center font-medium">
               <h3>Open Now</h3>
               <Checkbox
+                className="w-5 h-5"
                 checked={filters.open}
                 onClick={() => updateFilters({ open: !filters.open })}
               />
