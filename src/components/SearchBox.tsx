@@ -27,7 +27,7 @@ export function SearchBox() {
       <Command shouldFilter={false} className="group">
         <CommandInput
           autoFocus
-          placeholder="Find parking near..."
+          placeholder="Find bike racks near..."
           value={locationInput}
           onValueChange={setLocationInput}
         >
@@ -51,7 +51,9 @@ export function SearchBox() {
                     className="cursor-pointer"
                     value={place.name}
                     onSelect={() => {
-                      router.navigate({ to: `/search/${place.id}` });
+                      router.navigate({
+                        to: `/search/${place.id}`,
+                      });
                     }}
                   >
                     <div>{place.name}</div>
@@ -63,7 +65,9 @@ export function SearchBox() {
                   <CommandItem
                     key={place.id}
                     onSelect={() => {
-                      router.navigate({ to: `/search/${place.id}` });
+                      router.navigate({
+                        to: `/search/${place.id}`,
+                      });
                     }}
                   >
                     <div>{place.name}</div>
@@ -77,7 +81,9 @@ export function SearchBox() {
                 <CommandItem
                   key={suggestion.id}
                   onSelect={() => {
-                    router.navigate({ to: `/search/${suggestion.id}` });
+                    router.navigate({
+                      to: `/search/${suggestion.id}`,
+                    });
                   }}
                 >
                   <div>{suggestion.name}</div>

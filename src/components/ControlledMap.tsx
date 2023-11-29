@@ -1,6 +1,6 @@
 import {
   PropsWithChildren,
-  ReactNode,
+  // ReactNode,
   useEffect,
   useRef,
   useState,
@@ -11,9 +11,8 @@ import { LocationMarker } from "./LocationMarker";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { PinIcon } from "./icons/PinIcon";
 import { ConstructionIcon } from "./icons/ConstructionIcon";
-import { PoliceIcon } from "./icons/PoliceIcon";
+// import { PoliceIcon } from "./icons/PoliceIcon";
 import {
-  ReportTypes,
   useStore,
   Report,
   LotTypes,
@@ -26,7 +25,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -34,6 +32,7 @@ import {
 import { Link, useParams, useRouter } from "@tanstack/react-router";
 import { LockIcon } from "./icons/LockIcon";
 import { Search } from "lucide-react";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 const INITIAL_VIEWPORT = {
   latitude: 38.035629,
@@ -47,10 +46,9 @@ const lotTypeColors = {
   free: "#22c55e",
 } as const as Record<LotTypes, string>;
 
-const reportTypeIcons = {
-  construction: <ConstructionIcon className="w-6 h-6" />,
-  police: <PoliceIcon className="w-5 h-5" />,
-} as const as Record<ReportTypes, ReactNode>;
+const reportTypeIcon = {
+  lock: <ConstructionIcon className="w-6 h-6" />,
+} as const;
 
 function LotMarker({ lot }: { lot: ParkingLot }) {
   return (
@@ -88,23 +86,31 @@ function ReportMarker({ report }: { report: Report }) {
           longitude={report.location.longitude}
         >
           <div className="h-10 w-10 text-white pointer-events-auto cursor-pointer bg-white rounded-full border border-slate-300 grid place-content-center">
-            {reportTypeIcons[report.type]}
+            {reportTypeIcon.lock}
           </div>
         </Marker>
       </DialogTrigger>
       <DialogContent className="py-8">
-        <DialogHeader>
-          <DialogTitle className="">
-            {report.type === "construction"
-              ? "Construction reported"
-              : "Police activity reported"}
-          </DialogTitle>
-          <DialogDescription>
-            {report.type === "construction"
-              ? "This may slow down nearby traffic or limit parking availability."
-              : "This may increase the chances of ticketing in this area. Please be careful when driving or parking here."}
-          </DialogDescription>
-        </DialogHeader>
+        <DialogTitle className="">Lysander's LYVE Lock</DialogTitle>
+        <DialogDescription>
+          This is your lock. Click to unlock it!
+        </DialogDescription>
+        <button
+          onClick={() =>
+            window.open(
+              "http://maps.apple.com/?dirflg=w&daddr=" +
+                report.location.latitude +
+                "," +
+                report.location.longitude,
+              "_blank"
+            )
+          }
+        >
+          Walk There!
+        </button>
+        <DialogClose>
+          <button className="Button blue">Unlock!</button>
+        </DialogClose>
       </DialogContent>
     </Dialog>
   );

@@ -14,12 +14,12 @@ export type Place = {
 export const places: Place[] = [
   {
     id: 0,
-    name: "Rice Hall",
+    name: "Robertson Hall",
     isRecent: false,
     isSaved: true,
     location: {
-      latitude: 38.031979,
-      longitude: -78.511192,
+      latitude: 38.03304465069625,
+      longitude: -78.50399787293858,
     },
   },
   {
@@ -34,22 +34,22 @@ export const places: Place[] = [
   },
   {
     id: 2,
-    name: "Richmond, VA",
+    name: "Slaughter Recreation Center",
     isRecent: false,
     isSaved: false,
     location: {
-      latitude: 37.540726,
-      longitude: -77.43605,
+      latitude: 38.034861910633325,
+      longitude: -78.51793043622159,
     },
   },
   {
     id: 3,
-    name: "Olsson Hall",
+    name: "Snyder Tennis Courts",
     isRecent: false,
     isSaved: true,
     location: {
-      latitude: 38.0321969,
-      longitude: -78.5106805,
+      latitude: 38.03853759382077,
+      longitude: -78.50646263180232,
     },
   },
   {
@@ -111,7 +111,7 @@ export type ParkingLot = {
 export const lots: ParkingLot[] = [
   {
     name: "Central Grounds Garage",
-    type: "paid",
+    type: "free",
     open: true,
     capacity: 0.8,
     location: {
@@ -121,7 +121,7 @@ export const lots: ParkingLot[] = [
   },
   {
     name: "East A",
-    type: "permit",
+    type: "free",
     open: true,
     capacity: 0.4,
     location: {
@@ -140,18 +140,18 @@ export const lots: ParkingLot[] = [
     },
   },
   {
-    name: "Small Lot",
-    type: "permit",
+    name: "Slaughter Bike Rack",
+    type: "free",
     open: false,
     capacity: 0.5,
     location: {
-      latitude: 38.032078,
-      longitude: -78.511774,
+      latitude: 38.03517412489812,
+      longitude: -78.517911953603,
     },
   },
   {
     name: "Life Sciences Lot",
-    type: "paid",
+    type: "free",
     open: true,
     capacity: 0.2,
     location: {
@@ -181,15 +181,12 @@ export type Viewport = {
 };
 
 export type Report = {
-  type: ReportTypes;
+  id: number;
   location: {
     latitude: number;
     longitude: number;
   };
 };
-
-export const reportTypes = ["construction", "police"] as const;
-export type ReportTypes = (typeof reportTypes)[number];
 
 export type Store = {
   filters: Filters;
@@ -210,7 +207,7 @@ export const useStore = create<Store>((set) => ({
   viewport: INITIAL_VIEWPORT,
   reports: [
     {
-      type: "construction",
+      id: 0,
       location: {
         latitude: 38.030569,
         longitude: -78.511776,

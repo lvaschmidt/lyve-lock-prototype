@@ -52,6 +52,24 @@ export function Lot() {
               <div className="overflow-y-auto">
                 <div className="max-w-md w-full mx-auto flex flex-col p-4 px-8 h-full">
                   <h1 className="font-semibold text-3xl">{lot.name}</h1>
+                  <br></br>
+                  <br></br>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        "http://maps.apple.com/?dirflg=c&daddr=" +
+                          lot.location.latitude +
+                          "," +
+                          lot.location.longitude,
+                        "_blank"
+                      )
+                    }
+                  >
+                    Directions to Here
+                  </button>
+                  <br></br>
+                  <br></br>
+                  This rack is currently 25% full.
                 </div>
               </div>
             </div>
